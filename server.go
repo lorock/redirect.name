@@ -49,7 +49,8 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	parts := strings.Split(r.Host, ":")
 	host := parts[0]
 
-	hostname := fmt.Sprintf("_redirect.%s", host)
+	hostname := fmt.Sprintf("redirect.%s", host)
+	// hostname := fmt.Sprintf("_redirect.%s", host)
 	txt, err := net.LookupTXT(hostname)
 	if err != nil {
 		fallback(w, r, fmt.Sprintf("Could not resolve hostname (%v)", err))
@@ -67,7 +68,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 func main() {
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = "8081"
+		port = "80"
 	}
 
 	http.HandleFunc("/", handler)

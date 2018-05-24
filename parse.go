@@ -2,6 +2,7 @@ package main
 
 import "regexp"
 
+// Config Config
 type Config struct {
 	From          string
 	To            string
@@ -13,6 +14,7 @@ var fromRE = regexp.MustCompile(`\s+from\s+(/\S*)`)
 var toRE = regexp.MustCompile(`\s+to\s+(https?\://\S+|/\S*)`)
 var stateRE = regexp.MustCompile(`\s+(permanently|temporarily)|\s+with\s+(301|302|307|308)`)
 
+// Parse Parse
 func Parse(record string) *Config {
 	configMatches := configRE.FindStringSubmatch(record)
 	if len(configMatches) == 0 {

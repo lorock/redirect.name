@@ -6,11 +6,13 @@ import (
 	"strings"
 )
 
+// Redirect Redirect
 type Redirect struct {
 	Location string
 	Status   int
 }
 
+// Translate Translate
 func Translate(uri string, config *Config) *Redirect {
 	if uri == "" {
 		return nil

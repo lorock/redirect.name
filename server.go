@@ -13,7 +13,7 @@ import (
 )
 
 func fallback(w http.ResponseWriter, r *http.Request, reason string) {
-	location := "http://xubaojin.com/"
+	location := "https://www.abao.men/"
 	if reason != "" {
 		location = fmt.Sprintf("%s#reason=%s", location, url.QueryEscape(reason))
 	}

@@ -13,9 +13,9 @@ import (
 )
 
 func fallback(w http.ResponseWriter, r *http.Request, reason string) {
-	location := "https://www.abao.men/"
+	location := "https://abao.men/"
 	if reason != "" {
-		location = fmt.Sprintf("%s#reason=%s", location, url.QueryEscape(reason))
+		location = fmt.Sprintf("%s?reason=%s", location, url.QueryEscape(reason))
 	}
 	http.Redirect(w, r, location, 302)
 }
@@ -66,7 +66,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
-	port := os.Getenv("PORT")
+	port := os.Getenv("GOPORT")
 	if port == "" {
 		port = "80"
 	}

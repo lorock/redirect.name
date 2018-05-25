@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body>
+
+<h2 id="reasonID" style="color:#F00"></h2>
+
+<script type="text/javascript">
+//截取url数据方法
+    function getParam(name) {
+        var search = document.location.search;
+        //alert(search);
+        var pattern = new RegExp("[?&]" + name + "\=([^&]+)", "g");
+        var matcher = pattern.exec(search);
+        var items = null;
+        if (null != matcher) {
+            try {
+                items = decodeURIComponent(decodeURIComponent(matcher[1]));
+            } catch (e) {
+                try {
+                    items = decodeURIComponent(matcher[1]);
+                } catch (e) {
+                    items = matcher[1];
+                }
+            }
+        }
+        return items;
+    };
+    var reason= getParam("reason");
+    // document.write(reason.replace(/\+/g, " "))
+    document.getElementById('reasonID').innerHTML= reason.replace(/\+/g, " ");
+</script>
+</body>
+</html>
